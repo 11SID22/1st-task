@@ -7,11 +7,11 @@
 <body>
     <form onsubmit="saveToLocalStorage(event)">
         <label for="userName">Username:</label>
-        <input type="text" name="userName" id="userName" required><br><br>
+        <input type="text" name="userName" id="userNametag" required><br><br>
         <label for="emailId">Email:</label>
-        <input type="email" name="emailId" id="emailId" required><br><br>
+        <input type="email" name="emailId" id="emailIdtag" required><br><br>
         <label for="phoneNumber">Phone No:</label>
-        <input type="tel" name="phoneNumber" id="phoneNumber"><br><br>
+        <input type="tel" name="phoneNumber" id="phoneNumbertag"><br><br>
         <button>Submit</button>
     </form>
     <ul id="listOfItems"></ul>
@@ -48,11 +48,23 @@
             deletebtn.type = "button";
             deletebtn.value = "Delete";
             deletebtn.onclick = () => {
-                localStorage.removeItem(myObj);
+                localStorage.removeItem(myObj.email);
                 parentEle.removeChild(childEle)
             }
 
+            const editbtn = document.createElement('input');
+            editbtn.type = "button";
+            editbtn.value = "Edit";
+            editbtn.onclick = () => {
+                localStorage.removeItem(myObj.email);
+                parentEle.removeChild(childEle);
+                document.getElementById('userNametag').value = myObj.name;
+                document.getElementById('emailIdtag').value = myObj.email;
+                document.getElementById('phoneNumbertag').value = myObj.phoneNumber;
+            }
+
             childEle.appendChild(deletebtn);
+            childEle.appendChild(editbtn);
             parentEle.appendChild(childEle);
         }
     </script>
