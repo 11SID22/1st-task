@@ -43,6 +43,16 @@
             const parentEle = document.getElementById('listOfItems');
             const childEle = document.createElement('li');
             childEle.textContent = myObj.name + '-' + myObj.email + '-' + myObj.phoneNumber;
+            
+            const deletebtn = document.createElement('input');
+            deletebtn.type = "button";
+            deletebtn.value = "Delete";
+            deletebtn.onclick = () => {
+                localStorage.removeItem(myObj);
+                parentEle.removeChild(childEle)
+            }
+
+            childEle.appendChild(deletebtn);
             parentEle.appendChild(childEle);
         }
     </script>
