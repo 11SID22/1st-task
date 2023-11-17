@@ -47,6 +47,20 @@
             // showUserOnScreen(myObj);
     
         }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            axios.get("https://crudcrud.com/api/eb2676b05ec745bdaa558cd856156b23/appointmentData")
+            .then((res) => {
+                console.log(res)
+
+                for(let i=0; i<res.data.length; i++){
+                    showUserOnScreen(res.data[i])
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        })
         function showUserOnScreen(myObj){
             // const parentEle = document.getElementById('listOfItems');
             // parentEle.innerHtml = parentEle.innerHTML + `<li>${myObj.name},${myObj.email},${myObj.phoneNumber}</li>`
